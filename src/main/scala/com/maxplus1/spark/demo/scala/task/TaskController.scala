@@ -6,14 +6,14 @@ package com.maxplus1.spark.demo.scala.task
 object TaskController extends Serializable {
 
   def doTaskList(tasks: Array[Task]) = {
-    tasks.foreach(task => {
-      task.doTask()
-    })
+    tasks.foreach{
+      task => task.doTask()
+    }
   }
 
   def doTaskList(tasks: Task*) = {
-    tasks.foreach(task => {
-      task.doTask()
-    })
+    tasks.foreach{
+      task => task.doTask()
+    }
   }
 }
