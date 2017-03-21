@@ -6,7 +6,7 @@ spark-submit命令指定Main函数位于[com.maxplus1.spark.demo.scala.main](htt
 
 # Task任务
 Task任务位于[此包下](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/task)，
-所有Task需要实现[com.maxplus1.spark.demo.scala.task.Task](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/task/Task)
+所有Task需要实现[com.maxplus1.spark.demo.scala.task.Task](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/task/Task.scala)
 
 # TaskController任务控制
 [TaskController](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/task/TaskController)是object单例，用于顺序调度Task任务。
@@ -15,7 +15,7 @@ Task任务位于[此包下](https://github.com/Paleozoic/spark_spring_boot_demo/
 TASK_MAPPING映射了任务名以及任务的类型classOf
 
 # Main函数入参
-入参以JSON的形式传入，传入后会被反序列化为：[TaskInput](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/entity/TaskInput)，
+入参以JSON的形式传入，传入后会被反序列化为：[TaskInput](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/entity/TaskInput.scala)，
 TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
 
 # 持久层
