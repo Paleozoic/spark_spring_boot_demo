@@ -17,7 +17,16 @@ TASK_MAPPING映射了任务名以及任务的类型classOf
 # Main函数入参
 入参以JSON的形式传入，传入后会被反序列化为：[TaskInput](https://github.com/Paleozoic/spark_spring_boot_demo/tree/master/src/main/scala/com/maxplus1/spark/demo/scala/entity/TaskInput.scala)，
 TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
-
+一个参数的例子如下：
+```json
+{
+    "taskName": "testTask1",
+    "args": {
+        "time": "2017-03-21"
+    }
+}
+```
+根据参数的taskName可以从TASK_MAPPING取到相应的Task，并根据传入的参数taskName顺序传入TaskController顺序执行Task。
 # 持久层
 持久层使用Java版本的MyBatis，
 一般来说数据库操作用于读取相关配置参数或者写入程序状态。
