@@ -26,7 +26,9 @@ TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
     }
 }
 ```
-根据参数的taskName可以从TASK_MAPPING取到相应的Task，并根据传入的参数taskName顺序传入TaskController顺序执行Task。
+根据参数的taskName可以从TASK_MAPPING取到相应的Task，
+并根据传入的参数taskName顺序获得有序数组`tasks: Array[Task]`，
+将`tasks: Array[Task]`传入TaskController可以顺序执行Task。
 # 持久层
 持久层使用Java版本的MyBatis，
 一般来说数据库操作用于读取相关配置参数或者写入程序状态。
