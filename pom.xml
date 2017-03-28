@@ -11,6 +11,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <scope.type>provided</scope.type>
+        <!--<scope.type>compile </scope.type>-->
         <lulu.version>0.0.1</lulu.version>
         <scala.version>2.10.6</scala.version>
         <scala.bin.version>2.10</scala.bin.version>
@@ -40,13 +42,13 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${scope.type}</scope>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${scope.type}</scope>
         </dependency>
 
         <!-- spark -->
@@ -54,7 +56,7 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.bin.version}</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
+            <scope>${scope.type}</scope>
         </dependency>
         <!-- db -->
         <!--<dependency>
@@ -102,7 +104,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-            <!--<scope>provided</scope>-->
+            <scope>${scope.type}</scope>
         </dependency>
 
         <dependency>
