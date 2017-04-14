@@ -1,3 +1,5 @@
+# PS:我在基于Spring Boot的Storm工程上踩了不少坑，这个Spark Demo有一些错误的地方。待修正。比如打包，Spring Boot的启动机制 ClassLoader等。
+
 # spark_spring_boot_demo
 一个基于Spring Boot的Spark开发手脚架，开箱即用！
 
@@ -34,6 +36,6 @@ TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
 一般来说数据库操作用于读取相关配置参数或者写入程序状态。
 
 # Package打包
-使用maven打包的时候，注意某些不需要打入jar的包需要标注：`<scope>provided</scope>`
+使用maven打包的时候，注意某些不需要打入jar的包需要标注：`<scope>provided</scope>`[PS:此处错误，Spring Boot的打包插件不支持此配置]
 
 # PS:程序未测试 2017-03-21 23:06
