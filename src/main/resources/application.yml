@@ -1,6 +1,6 @@
 task:
   demo:
-    appName: DemoTest
+    appName: sparkDemo
 
 spring:
   datasource:
