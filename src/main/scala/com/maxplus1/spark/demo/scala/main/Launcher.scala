@@ -3,7 +3,7 @@ package com.maxplus1.spark.demo.scala.main
 import com.maxplus1.spark.demo.java.utils.JacksonUtils
 import com.maxplus1.spark.demo.scala.entity.TaskInput
 import com.maxplus1.spark.demo.scala.props.TaskProperties
-import com.maxplus1.spark.demo.scala.task.{ProduceSentenceTask, Task, TaskController}
+import com.maxplus1.spark.demo.scala.task.{ProduceSentenceTask, Task, TaskController, WordCountTask}
 import org.apache.spark.SparkContext
 import org.slf4j.{Logger, LoggerFactory}
 import org.springframework.boot.SpringApplication
@@ -30,7 +30,10 @@ object Launcher {
   @transient
   var sparkContext: SparkContext = _*/
 
-  private val TASK_MAPPING = Map("ProduceSentenceTask" -> classOf[ProduceSentenceTask])
+  private val TASK_MAPPING = Map(
+    "ProduceSentenceTask" -> classOf[ProduceSentenceTask],
+    "WordCountTask" -> classOf[WordCountTask]
+  )
 
   def main(args: Array[String]): Unit = {
     if (args.length <= 0) {

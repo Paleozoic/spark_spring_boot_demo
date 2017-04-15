@@ -25,7 +25,8 @@ public class buildSparkCmd {
         cmd.append(" --class org.springframework.boot.loader.JarLauncher ")
            .append(" --master local[2] ")
            .append(FINAL_NAME)
-           .append(" {\\\"taskName\\\":\\\"ProduceSentenceTask\\\"} ");
+           .append(" {\\\"taskName\\\":\\\"ProduceSentenceTask\\\"} ")
+           .append(" {\\\"taskName\\\":\\\"WordCountTask\\\"} ");
         System.out.println("====================================");
         System.out.println(cmd.toString());
         System.out.println("====================================");

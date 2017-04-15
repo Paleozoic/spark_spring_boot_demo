@@ -30,6 +30,8 @@ class ProduceSentenceTask extends Task{
     },3) //创建1000个句子，并且分为3个Partition 的 RDD
     val count = sentencesRdd.count()
     val partitionNum = sentencesRdd.getNumPartitions
+    sentencesRdd.saveAsTextFile("hdfs://hdnode:9000/testFiles/sentencesFile")
+
     println(s"the count of sentencesRdd is : [$count]")
     println(s"the num of Partitions is : [$partitionNum]")
     log.info("ProduceSentenceTask stop")
