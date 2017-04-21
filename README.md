@@ -40,6 +40,7 @@ TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
 请留意[pom.xml](https://github.com/Paleozoic/spark_spring_boot_demo/blob/master/pom.xml)
 
 # 为什么Java和Scala混编？
-- Scala语法糖实在太多……这个即是好处也是坏处
-- Java更适合与面向对象编程，而Scala函数编程的特性，更适合用于计算，复合数学思维的特性。所以使用Java写面向对象的代码，使用Scala写Spark相关计算代码。
+- Scala语法糖实在太多……这个既是好处也是坏处
+- Java更适合于面向对象编程，而Scala函数编程的特性，更适合用于计算，复合数学思维的特性。所以使用Java写面向对象的代码，使用Scala写Spark相关计算代码。
+- PS：以上属于个人理解，且听且思。
 
