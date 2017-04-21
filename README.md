@@ -37,5 +37,9 @@ TaskInput由`taskName:String`和`args:java.util.Map[String,String]`组成。
 一般来说数据库操作用于读取相关配置参数或者写入程序状态。
 
 # Package打包
-使用maven打包的时候，注意某些不需要打入jar的包需要标注：`<scope>provided</scope>`[PS:此处错误，Spring Boot的打包插件不支持此配置]
+请留意[pom.xml](https://github.com/Paleozoic/spark_spring_boot_demo/blob/master/pom.xml)
+
+# 为什么Java和Scala混编？
+- Scala语法糖实在太多……这个即是好处也是坏处
+- Java更适合与面向对象编程，而Scala函数编程的特性，更适合用于计算，复合数学思维的特性。所以使用Java写面向对象的代码，使用Scala写Spark相关计算代码。
 
