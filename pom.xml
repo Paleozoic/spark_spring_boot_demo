@@ -12,8 +12,8 @@
         <finalName>SparkDemo</finalName>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <!--<scope.type>provided</scope.type>-->
-        <scope.type>compile</scope.type>
+        <scope.type>provided</scope.type>
+        <!--<scope.type>compile</scope.type>-->
         <scala.version>2.10.6</scala.version>
         <scala.bin.version>2.10</scala.bin.version>
         <spark.version>1.6.0</spark.version>
@@ -165,34 +165,29 @@
                 </executions>
                 <configuration>
                     <scalaVersion>${scala.version}</scalaVersion>
-                    <!--<launchers>-->
-                        <!--<launcher>-->
-                            <!--<id>app</id>-->
-                            <!--<mainClass>com.springboot.in.action.LightSwordApplication</mainClass>-->
-                            <!--<jvmArgs>-->
-                                <!--<jvmArg>-Xmx1024m</jvmArg>-->
-                            <!--</jvmArgs>-->
-                        <!--</launcher>-->
-                    <!--</launchers>-->
                 </configuration>
             </plugin>
+            <!-- jar没有变更可以去掉 -->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludeGroupIds>org.apache.hadoop,org.apache.spark,org.scala-lang,com.typesafe.akka,org.apache.avro</excludeGroupIds>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.apache.zookeeper</groupId>
-                            <artifactId>zookeeper</artifactId>
-                        </exclude>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/libs</outputDirectory>
+                            <includeScope>runtime</includeScope>
+                            <excludeArtifactIds>zookeeper,slf4j-log4j12,log4j</excludeArtifactIds>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+            <!-- 跳过测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -200,47 +195,28 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <!--<tasks> //打包fatjar，但是jar太多  效率低，而且运行报错
-                                <unjar src="${project.build.directory}/${finalName}.jar" dest="${project.build.directory}/${finalName}" />
-                                <unjar dest="${project.build.directory}/${finalName}/BOOT-INF/classes">
-                                    <fileset dir="${project.build.directory}/${finalName}/BOOT-INF/lib" includes="*.jar"/>
-                                </unjar>
-                                <delete>
-                                    <fileset dir="${project.build.directory}/${finalName}/BOOT-INF/lib" includes="*.jar" />
-                                </delete>
-                                <delete file="${project.build.directory}/${finalName}.jar" />
-                                <zip destfile="${project.build.directory}/${finalName}.jar" basedir="${project.build.directory}/${finalName}" />
-                            </tasks>-->
-                            <tasks>
-                                <unjar src="${project.build.directory}/${finalName}.jar" dest="${project.build.directory}/${finalName}" />
-                                <move todir="${project.build.directory}/libs">
-                                    <fileset dir="${project.build.directory}/${finalName}/BOOT-INF/lib" includes="*.jar"/>
-                                </move>
-                                <delete>
-                                    <fileset dir="${project.build.directory}/${finalName}/BOOT-INF/lib" includes="*.jar" />
-                                </delete>
-                                <delete file="${project.build.directory}/${finalName}.jar" />
-                                <zip destfile="${project.build.directory}/${finalName}.jar" basedir="${project.build.directory}/${finalName}" />
-                                <!-- 如果jar没有变更，则可以注释此行 -->
+            <!-- 不需要压缩可以去掉 -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<tasks>-->
+                                <!--&lt;!&ndash; 压缩 &ndash;&gt;-->
                                 <!--<zip destfile="${project.build.directory}/${finalName}.zip">-->
-                                    <!--<fileset dir="${project.build.directory}" includes="libs/*.jar" />-->
-                                    <!--<fileset dir="${project.build.directory}" includes="${finalName}.jar" />-->
+                                    <!--<fileset dir="${project.build.directory}" includes="libs/*.jar"/>-->
+                                    <!--<fileset dir="${project.build.directory}" includes="${finalName}.jar"/>-->
                                 <!--</zip>-->
-                            </tasks>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+                            <!--</tasks>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

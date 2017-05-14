@@ -22,8 +22,8 @@ public class buildSparkCmd {
             cmd.append("libs/").append(file.getName()).append(",");
         });
         cmd.deleteCharAt(cmd.length()-1).append("\"");
-        cmd.append(" --class org.springframework.boot.loader.JarLauncher ")
-           .append(" --master local[2] ")
+        cmd.append(" --class com.maxplus1.spark.demo.scala.main.Launcher ")
+           .append(" --master yarn-cluster ")
            .append(FINAL_NAME)
            .append(" {\\\"taskName\\\":\\\"ProduceSentenceTask\\\"} ")
            .append(" {\\\"taskName\\\":\\\"WordCountTask\\\"} ");

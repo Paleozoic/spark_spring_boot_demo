@@ -18,9 +18,9 @@ class ProduceSentenceTask extends Task{
     val random = new Random
     // 句子数组
     val sentences = Array[String]("the cow jumped over the moon", "an apple a day keeps the doctor away", "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature")
-    val arr = new Array[String](1000)
     // TODO: 具体的业务逻辑
     val sentencesRdd = sparkContext.parallelize({
+      val arr = new Array[String](1000)
       for(i<- 0 until  1000){
         // 随机选择一个句子
         val sentence = sentences(random.nextInt(sentences.length))

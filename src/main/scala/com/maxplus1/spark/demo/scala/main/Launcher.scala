@@ -26,10 +26,6 @@ class Launcher {
 object Launcher {
   val log: Logger = LoggerFactory.getLogger(classOf[Launcher])
 
-  /*@Autowired
-  @transient
-  var sparkContext: SparkContext = _*/
-
   private val TASK_MAPPING = Map(
     "ProduceSentenceTask" -> classOf[ProduceSentenceTask],
     "WordCountTask" -> classOf[WordCountTask]
