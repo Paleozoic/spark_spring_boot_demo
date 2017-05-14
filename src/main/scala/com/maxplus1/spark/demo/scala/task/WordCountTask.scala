@@ -1,7 +1,5 @@
 package com.maxplus1.spark.demo.scala.task
 
-import java.util.Random
-
 import org.slf4j.{Logger, LoggerFactory}
 
 /**
